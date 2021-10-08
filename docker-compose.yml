@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: thedatabase
+      POSTGRES_DB: ${POSTGRES_DB}
     ports: 
       - '5555:5432'
     volumes:
@@ -21,7 +21,7 @@ services:
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_HOST: pgdb
-      POSTGRES_DB: thedatabase
+      POSTGRES_DB: ${POSTGRES_DB}
     depends_on:
       - pgdb
     ports:
