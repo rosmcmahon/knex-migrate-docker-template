@@ -1,0 +1,5 @@
+knex init
+knex --env production migrate:make init_migration
+# edit the created file
+knex --env production migrate:latest
+knex --env production migrate:rollback

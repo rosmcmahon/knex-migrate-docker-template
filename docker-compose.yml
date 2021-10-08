@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  pgdb:
+    build: 
+      context: ./postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: thedatabase
+    ports: 
+      - '5555:5432'
+    volumes:
+      - ./postgres/build:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: ./app
+    environment:
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: pgdb
+      POSTGRES_DB: thedatabase
+    depends_on:
+      - pgdb
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./app:/app

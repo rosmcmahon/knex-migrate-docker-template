@@ -1,0 +1,15 @@
+FROM node:14
+
+WORKDIR /app
+
+# COPY package*.json ./
+
+# RUN npm ci --only=production
+
+# COPY . .
+
+EXPOSE 3000
+
+RUN npm install -g knex ts-node
+
+ENTRYPOINT [ "npm", "start" ]
